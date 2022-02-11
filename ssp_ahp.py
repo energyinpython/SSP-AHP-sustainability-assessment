@@ -1,7 +1,4 @@
 import numpy as np
-
-from scipy.sparse.linalg import eigs
-
 from normalizations import *
 from mcdm_method import MCDM_method
 
@@ -28,8 +25,9 @@ class AHP(MCDM_method):
 
 
     def _calculate_eigenvector(self, X):
-        val, vec = eigs(X, k=1)
+        val, vec = np.linalg.eig(X)
         eig_vec = np.real(vec)
+        eig_vec = eig_vec[:, 0]
         S = eig_vec / np.sum(eig_vec)
         S = S.ravel()
         return S
@@ -38,7 +36,7 @@ class AHP(MCDM_method):
     # normalization of decision matrix was performed in the previous stage
     # thus divide by sum is not needed
     def _normalized_column_sum_method(self, X):
-        return np.sum(X, axis = 1) #/ np.sum(X)
+        return np.sum(X, axis = 1)
 
 
     def _normalized_column_sum_method_classic(self, X):

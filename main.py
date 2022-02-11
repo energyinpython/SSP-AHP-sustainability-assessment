@@ -199,9 +199,9 @@ def main():
             
             s_set = np.zeros(matrix.shape[1])
             s_set[indexes[el]] += s
-            print('Set...')
-            print(indexes[el])
-            print(s_set)
+            # print('Set...')
+            # print(indexes[el])
+            # print(s_set)
             pref = ahp(matrix, weights, types, mad = True, s = s_set)
             rank = rank_preferences(pref, reverse = True)
             df_sust[str(s)] = rank
@@ -215,6 +215,7 @@ def main():
 
     merger.write("output/pdfjoined_" + weights_type + ".pdf")
     merger.close()
+    
     
 if __name__ == '__main__':
     main()
