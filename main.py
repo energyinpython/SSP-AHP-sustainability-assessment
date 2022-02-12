@@ -102,7 +102,7 @@ def main():
 
     
     # choose weighting method: ahp critic entropy
-    weights_type = 'entropy'
+    weights_type = 'ahp'
 
     if weights_type == 'ahp':
         main_weights = copy.deepcopy(W)

@@ -14,6 +14,8 @@ class AHP(MCDM_method):
 
 
     def _check_consistency(self, X):
+        if X.shape[0] != X.shape[1]:
+            raise ValueError('Number of rows and columns of pairwise comparison matrix must be equal')
         n = X.shape[1]
         RI = [0, 0, 0.58, 0.90, 1.12, 1.24, 1.32, 1.41, 1.45, 1.49]
         lambdamax = np.amax(np.linalg.eigvals(X).real)
@@ -25,6 +27,8 @@ class AHP(MCDM_method):
 
 
     def _calculate_eigenvector(self, X):
+        if X.shape[0] != X.shape[1]:
+            raise ValueError('Number of rows and columns of pairwise comparison matrix must be equal')
         val, vec = np.linalg.eig(X)
         eig_vec = np.real(vec)
         eig_vec = eig_vec[:, 0]
