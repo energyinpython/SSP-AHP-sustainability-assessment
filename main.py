@@ -2,9 +2,7 @@ import numpy as np
 import pandas as pd
 import copy
 import os
-import sys
 
-import matplotlib
 from itertools import product
 
 from PyPDF2 import PdfFileMerger
@@ -21,7 +19,7 @@ def main():
     # Input data
     folder_name = './input'
     # Name of file with input data
-    file_name = 'data_2019.csv'
+    file_name = 'dataset.csv'
     path_data = os.path.join(folder_name, file_name)
     data = pd.read_csv(path_data, index_col = 'Country')
 
